@@ -5,8 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NoxSatzz Script Store</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* ===== REFLECTION ===== */
+.reflection {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  background: linear-gradient(
+    45deg,
+    rgba(255,255,255,0.2) 0%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0.2) 100%
+  );
+  filter: blur(10px);
+  animation: moveDiagonal 4s infinite alternate, colorShift 6s infinite alternate;
+  z-index:0; /* tetap di belakang konten */
+}
+
+@keyframes moveDiagonal {
+  0% { transform: translate(-50%, 50%) rotate(45deg); }
+  100% { transform: translate(50%, -50%) rotate(45deg); }
+}
+
+@keyframes colorShift {
+  0%   { background: linear-gradient(45deg, rgba(255,0,0,0.2), rgba(0,255,0,0.2), rgba(0,0,255,0.2)); }
+  25%  { background: linear-gradient(45deg, rgba(255,255,0,0.2), rgba(0,255,255,0.2), rgba(255,0,255,0.2)); }
+  50%  { background: linear-gradient(45deg, rgba(255,128,0,0.2), rgba(128,0,255,0.2), rgba(0,128,255,0.2)); }
+  75%  { background: linear-gradient(45deg, rgba(255,0,128,0.2), rgba(0,255,128,0.2), rgba(128,255,0,0.2)); }
+  100% { background: linear-gradient(45deg, rgba(255,0,0,0.2), rgba(0,255,0,0.2), rgba(0,0,255,0.2)); }
+}
+
+/* ===== BACKGROUND WHITE ↔ BLACK ===== */
+body {
+  animation: bgFade 8s infinite alternate;
+}
+
+@keyframes bgFade {
+  0% { background-color: #fff; }
+  50% { background-color: #000; }
+  100% { background-color: #fff; }
+}
+</style>
 </head>
 <body>
+
+<!-- REFLECTION -->
+<div class="reflection"></div>
 
 <!-- HEADER TENGAH -->
 <header class="header-center">
@@ -16,11 +63,11 @@
   <p class="store-desc" style="color:#ccc;">Deskripsi toko, misal jualan script game neon keren.</p>
 </header>
 
-  <!--BUTTON SHOWCASE -->
-  <a href="https://drive.google.com/file/d/10yneZfHeRMOFiD2CeRBB2TAzIMcSgx9n/view?usp=drivesdk" target="_blank" 
+<!--BUTTON SHOWCASE -->
+<a href="https://drive.google.com/file/d/10yneZfHeRMOFiD2CeRBB2TAzIMcSgx9n/view?usp=drivesdk" target="_blank" 
    style="padding:10px 20px; border:2px solid #00ff00; color:#00ff00; background:#fffcfa; border-radius:5px; text-decoration:none; display:inline-block;">
   ShowCase Sc Auto Take Bp+Equip (GTFY)
-  </a>
+</a>
 
 <!-- SCRIPT GRATISAN -->
 <h3 class="category-title category-center" style="color:#00ff00; text-shadow:0 0 5px #00ff00 0 10px #00ff00;">Script Gratisan</h3>
@@ -35,6 +82,7 @@
       <a href="https://youtu.be/IpZJtaVfFAE?si=AHMkQfHufs6VAVjP" class="btn btn2" style="background:#ff0000;">SKIP LINK</a>
     </div>
   </div>
+</div>
   
 <!-- SCRIPT PREMIUM -->
 <h3 class="category-title category-center" style="color:#ffa500; text-shadow:0 0 5px #ffa500,0 0 10px #ffa500;">Script Premium</h3>
@@ -49,7 +97,8 @@
       <a href="#" class="btn btn2" style="background:#ff0000;">HOW TO BUY</a>
     </div>
   </div>
-  
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
