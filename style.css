@@ -15,7 +15,17 @@ body{
 .store-name{
   font-size:28px;
   margin:0;
-  text-shadow:0 0 5px red,0 0 10px red;
+  color:#ff4444;
+  text-shadow:
+    0 0 5px rgba(255,68,68,0.3),
+    0 0 10px rgba(255,68,68,0.2),
+    0 0 20px rgba(255,68,68,0.1);
+  animation:softNeon 2s infinite alternate;
+}
+@keyframes softNeon{
+  0%{text-shadow:0 0 3px rgba(255,68,68,0.2),0 0 5px rgba(255,68,68,0.1);}
+  50%{text-shadow:0 0 6px rgba(255,68,68,0.4),0 0 12px rgba(255,68,68,0.3);}
+  100%{text-shadow:0 0 3px rgba(255,68,68,0.2),0 0 5px rgba(255,68,68,0.1);}
 }
 .store-desc{
   font-size:14px;
@@ -37,10 +47,10 @@ body{
 /* GRID */
 .container{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(100%,1fr)); /* card full lebar */
+  grid-template-columns:1fr; /* card full lebar */
   gap:12px;
   justify-items:center;
-  padding:0 10px; /* pinggir minimal */
+  padding:0 5px; /* pinggir minimal */
 }
 
 /* CARD FULL HITAM + STROKE ATAS */
@@ -51,18 +61,18 @@ body{
   cursor:pointer;
   overflow:hidden;
   background:#000; /* full hitam */
-  border:2px solid #000; /* border hitam */
-  width:100%; /* card full lebar */
-  max-width:700px; /* opsional */
+  border:2px solid #000;
+  width:100%; /* full lebar container */
+  max-width:1000px; /* card panjang banget */
   transition:.25s;
 }
 
-/* Stroke neon di atas card */
+/* Stroke neon atas */
 .card-top-stroke{
   position:absolute;
   top:0; left:0;
   width:100%;
-  height:6px; /* tebal stroke atas */
+  height:6px;
   background:linear-gradient(90deg,#ff0000,#ff5555,#ff0000);
   border-radius:14px 14px 0 0;
   z-index:1;
@@ -110,221 +120,4 @@ body{
 @keyframes ripple{to{transform:scale(5);opacity:0;}}
 
 /* CARD HOVER */
-.card:hover{ transform:translateY(-6px);}/* GRID */
-.container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); /* card lebih panjang */
-  gap:12px;
-  justify-items:center;
-  padding:0 10px;
-}
-
-/* CARD FULL HITAM + LEBAR + STROKE ATAS */
-.card{
-  position:relative;
-  padding:15px;
-  border-radius:14px;
-  cursor:pointer;
-  overflow:hidden;
-  background:#000; /* full hitam */
-  border:2px solid #000; /* default hitam */
-  width:300px; /* card lebih panjang */
-  transition:.25s;
-}
-
-/* Stroke neon di atas card */
-.card-top-stroke{
-  position:absolute;
-  top:0; left:0;
-  width:100%;
-  height:6px; /* tebal stroke atas */
-  background:linear-gradient(90deg,#ff0000,#ff5555,#ff0000); /* neon tipis */
-  border-radius:14px 14px 0 0;
-  z-index:1;
-}
-
-/* BADGE */
-.badge{
-  position:absolute;
-  top:8px; right:8px;
-  font-size:10px;
-  padding:3px 7px;
-  border-radius:6px;
-  background:red;
-  color:black;
-}
-
-/* BUTTONS */
-.btns{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:12px;
-}
-.btn{
-  flex:1;
-  padding:10px 0;
-  border-radius:8px;
-  text-align:center;
-  font-weight:bold;
-  text-decoration:none;
-  color:white;
-  display:inline-block;
-}
-.btn1{background:#00c853;}
-.btn2{background:#2979ff;}
-
-/* RIPPLE */
-.ripple{
-  position:absolute;
-  border-radius:50%;
-  background:rgba(255,255,255,.5);
-  transform:scale(0);
-  animation:ripple .5s linear;
-}
-@keyframes ripple{to{transform:scale(5);opacity:0;}}
-
-/* CARD HOVER */
-.card:hover{ transform:translateY(-6px);}/* GRID */
-.container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:18px;
-  justify-items:center; /* card di tengah grid */
-}
-
-/* CARD TRANSPARAN + STROKE MERAH + NEON GLOW */
-.card{
-  position:relative;
-  padding:18px;
-  border-radius:14px;
-  cursor:pointer;
-  overflow:hidden;
-  background:rgba(0,0,0,0.3); /* transparan */
-  border:2px solid var(--glow); /* stroke neon merah */
-  animation:glowPulse 2s infinite alternate;
-  transition:.25s;
-  width:220px;
-}
-@keyframes glowPulse{
-  from{ box-shadow:0 0 8px var(--glow);}
-  to{ box-shadow:0 0 25px var(--glow);}
-}
 .card:hover{ transform:translateY(-6px);}
-
-/* BORDER NEON JALAN */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:14px;
-  background:linear-gradient(90deg,transparent,var(--glow),transparent);
-  animation:borderMove 3s linear infinite;
-  z-index:-1;
-}
-@keyframes borderMove{100%{background-position:300% 0;}}
-
-/* SHINE EFFECT */
-.card::after{
-  content:"";
-  position:absolute;
-  top:0; left:-120%;
-  width:60%; height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.7),transparent);
-  transform:skewX(-20deg);
-}
-.card:active::after{animation:shine .6s;}
-@keyframes shine{to{left:130%;}}
-
-/* BADGE */
-.badge{
-  position:absolute;
-  top:8px; right:8px;
-  font-size:10px;
-  padding:3px 7px;
-  border-radius:6px;
-  background:var(--glow);
-  color:black;
-}
-
-/* BUTTONS */
-.btns{display:flex; gap:6px; margin-top:10px;}
-.btn{flex:1; padding:8px; border-radius:8px; text-align:center; font-weight:bold; text-decoration:none; color:white; display:inline-block; text-align:center;}
-.btn1{background:#00c853;}
-.btn2{background:#2979ff;}
-
-/* RIPPLE */
-.ripple{
-  position:absolute;
-  border-radius:50%;
-  background:rgba(255,255,255,.5);
-  transform:scale(0);
-  animation:ripple .5s linear;
-}
-@keyframes ripple{to{transform:scale(5);opacity:0;}}.card{
-  position:relative;
-  padding:18px;
-  border-radius:14px;
-  cursor:pointer;
-  overflow:hidden;
-  background:var(--bg);
-  border:1px solid rgba(255,255,255,0.1);
-  animation:glowPulse 2s infinite alternate;
-  transition:.25s;
-}
-@keyframes glowPulse{
-  from{ box-shadow:0 0 8px var(--glow);}
-  to{ box-shadow:0 0 25px var(--glow);}
-}
-.card:hover{ transform:translateY(-6px);}
-
-/* BORDER NEON JALAN */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:14px;
-  background:linear-gradient(90deg,transparent,var(--glow),transparent);
-  animation:borderMove 3s linear infinite;
-  z-index:-1;
-}
-@keyframes borderMove{100%{background-position:300% 0;}}
-
-/* SHINE EFFECT */
-.card::after{
-  content:"";
-  position:absolute;
-  top:0; left:-120%;
-  width:60%; height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.7),transparent);
-  transform:skewX(-20deg);
-}
-.card:active::after{animation:shine .6s;}
-@keyframes shine{to{left:130%;}}
-
-/* BADGE */
-.badge{
-  position:absolute;
-  top:8px; right:8px;
-  font-size:10px;
-  padding:3px 7px;
-  border-radius:6px;
-  background:var(--glow);
-  color:black;
-}
-
-/* BUTTONS */
-.btns{display:flex; gap:6px; margin-top:10px;}
-.btn{flex:1; padding:8px; border-radius:8px; text-align:center; font-weight:bold; text-decoration:none; color:white; display:inline-block; text-align:center;}
-.btn1{background:#00c853;}
-.btn2{background:#2979ff;}
-
-/* RIPPLE */
-.ripple{
-  position:absolute;
-  border-radius:50%;
-  background:rgba(255,255,255,.5);
-  transform:scale(0);
-  animation:ripple .5s linear;
-}
-@keyframes ripple{to{transform:scale(5);opacity:0;}}
