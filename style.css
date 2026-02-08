@@ -201,3 +201,37 @@ body{
 
 /* CARD HOVER */
 .card:hover{ transform:translateY(-6px);}
+
+/* ===== CSS lama tetap di sini ===== */
+
+/* ----- Tambahan efek pantulan kaca ----- */
+.reflection {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  background: linear-gradient(
+    45deg, 
+    rgba(255,255,255,0.2) 0%, 
+    rgba(255,255,255,0.1) 50%, 
+    rgba(255,255,255,0.2) 100%
+  );
+  filter: blur(10px);
+  animation: moveDiagonal 4s infinite alternate, colorShift 6s infinite alternate;
+  z-index: 0; /* biar konten tetap terlihat di atas */
+}
+
+@keyframes moveDiagonal {
+  0% { transform: translate(-50%, 50%) rotate(45deg); }
+  100% { transform: translate(50%, -50%) rotate(45deg); }
+}
+
+@keyframes colorShift {
+  0%   { background: linear-gradient(45deg, rgba(255,0,0,0.2), rgba(0,255,0,0.2), rgba(0,0,255,0.2)); }
+  25%  { background: linear-gradient(45deg, rgba(255,255,0,0.2), rgba(0,255,255,0.2), rgba(255,0,255,0.2)); }
+  50%  { background: linear-gradient(45deg, rgba(255,128,0,0.2), rgba(128,0,255,0.2), rgba(0,128,255,0.2)); }
+  75%  { background: linear-gradient(45deg, rgba(255,0,128,0.2), rgba(0,255,128,0.2), rgba(128,255,0,0.2)); }
+  100% { background: linear-gradient(45deg, rgba(255,0,0,0.2), rgba(0,255,0,0.2), rgba(0,0,255,0.2)); }
+  }
