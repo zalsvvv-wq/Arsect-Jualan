@@ -1,4 +1,4 @@
-// Hanya untuk efek ripple klik card
+// Efek ripple klik card
 document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('click', e=>{
     const ripple = document.createElement('span');
