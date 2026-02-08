@@ -62,7 +62,7 @@ body{
   overflow:hidden;
   background:#111111; /* hitam ke abu-abu */
   border:2px solid #111111;
-  width:100%; /* full lebar */
+  width:80%; /* full lebar */
   max-width:1000px;
   transition:.25s;
 }
