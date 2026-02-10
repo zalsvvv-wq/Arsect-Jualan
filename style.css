@@ -286,3 +286,32 @@ body {
   animation:ripple .5s linear;
 }
 @keyframes ripple{to{transform:scale(5);opacity:0;}}
+
+/* ===== NEON BUTTON FLEX COLOR ===== */
+.neon-btn{
+  --neon:#00ff00; /* warna default kalau tidak diset */
+
+  padding:10px 22px;
+  border:2px solid var(--neon);
+  border-radius:8px;
+
+  background:transparent;
+  color:var(--neon);
+
+  font-weight:bold;
+  text-decoration:none;
+  display:inline-block;
+
+  animation:neonPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes neonPulse{
+  50%{
+    text-shadow:0 0 15px var(--neon), 0 0 35px var(--neon);
+    box-shadow:0 0 12px var(--neon);
+    opacity:1;
+  }
+  0%,100%{
+    opacity:.6;
+  }
+}
